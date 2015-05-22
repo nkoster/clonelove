@@ -37,9 +37,7 @@ Next,
 * Check if you are not blocking traffic, add necessary rules or disable your firewall
 * Apply the configurations you find below
 * Go! Start creating disk images and cloning machines
-* Place image files into the web server's document root, to make them available in the network like this
-
-     http://10.11.12.1/my_vda.img.gz
+* Place image files into the web server's document root, to make them available in the network like this: **`http://10.11.12.1/my_vda.img.gz`**
 
 **Assumptions / Requirements,**
 
