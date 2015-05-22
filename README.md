@@ -43,13 +43,9 @@ Next,
 
 * The Master server is in an isolated network, on a dedicated switch
 * The Master server has IP address 10.11.12.1
-* The Master server has a user clonelove, with no password set
-
-    sudo useradd clonelove
-    sudo passwd -d clonelove
-
+* The Master server has a user clonelove, with no password set (`sudo useradd clonelove` `sudo passwd -d clonelove`)
 * Login without password is allowed in the SSH server configuration (see below)
-* You know what you are doing and you have determined and configured the correct target disk to be cloned to, in /var/lib/tftpboot/pxelinux.cfg/*
+* You know what you are doing and you have determined and configured the correct target disk to be cloned to, in `/var/lib/tftpboot/pxelinux.cfg/*`
 
 ### Install CloneLove
 
