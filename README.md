@@ -1,9 +1,9 @@
 Current state: Experimental / Beta! See To do below.
 
-= CloneLove =
+# CloneLove
 
 ### A network disk cloner
-based on PXE, dd and gzip, assembled with Linux, udev, busybox and dropbear
+#### based on PXE, dd and gzip, assembled with Linux, udev, busybox and dropbear
 
 CloneLove is Linux 3.18, running in RAM and started from the network. The kernel includes most disk-, controller- and network drivers, all detected and loaded, with the precious help of udev and friends.
 
