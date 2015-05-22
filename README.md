@@ -52,87 +52,96 @@ Next,
     wget https://w3b.net/clonelove/clonelove_tftpboot.tgz
     sudo tar xzf clonelove_tftpboot.tgz -C /var/lib/
 
-Configuration Files
-SSH
-/etc/ssh/sshd_config
+### Configuration Files
 
-Protocol 2
-SyslogFacility AUTHPRIV
-PermitEmptyPasswords yes
-PasswordAuthentication yes
-ChallengeResponseAuthentication no
-GSSAPIAuthentication no
-UsePAM yes
+##### SSH
 
-TFTP / XINETD
-/etc/xinetd.d/tftp
+`/etc/ssh/sshd_config`
 
-service tftp
-{
-	socket_type		= dgram
-	protocol		= udp
-	wait			= yes
-	user			= root
-	server			= /usr/sbin/in.tftpd
-	server_args		= -s /var/lib/tftpboot
-	disable			= no
-	per_source		= 11
-	cps			= 100 2
-	flags			= IPv4
-}
+    Protocol 2
+    SyslogFacility AUTHPRIV
+    PermitEmptyPasswords yes
+    PasswordAuthentication yes
+    ChallengeResponseAuthentication no
+    GSSAPIAuthentication no
+    UsePAM yes
 
-DHCP
-/etc/dhcp/dhcpd.conf
+##### TFTP / XINETD
 
-ddns-update-style none;
-option space PXE;
-option PXE.mtftp-ip               code 1 = ip-address;  
-option PXE.mtftp-cport            code 2 = unsigned integer 16;
-option PXE.mtftp-sport            code 3 = unsigned integer 16;
-option PXE.mtftp-tmout            code 4 = unsigned integer 8;
-option PXE.mtftp-delay            code 5 = unsigned integer 8;
-option PXE.discovery-control      code 6 = unsigned integer 8;
-option PXE.discovery-mcast-addr   code 7 = ip-address;
-subnet 10.11.12.0 netmask 255.255.255.0 {
-  class "pxeclients" {
-    match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-    option vendor-class-identifier "PXEClient";
-    vendor-option-space PXE;
-    option PXE.mtftp-ip 0.0.0.0;
-    option routers 10.11.12.1;
-    filename "pxelinux.0";
-    next-server 10.11.12.1;
-  }
-  pool {
-    max-lease-time 86400;
-    default-lease-time 86400;
-    range 10.11.12.101 10.11.12.254;
-    allow unknown clients;
-  }
-}
+`/etc/xinetd.d/tftp`
 
-PXE Boot Loader
-/var/lib/tftpboot/pxelinux.cfg/default
+    service tftp
+    {
+    	socket_type		= dgram
+    	protocol		= udp
+    	wait			= yes
+    	user			= root
+    	server			= /usr/sbin/in.tftpd
+    	server_args		= -s /var/lib/tftpboot
+    	disable			= no
+    	per_source		= 11
+    	cps			= 100 2
+    	flags			= IPv4
+    } 
 
-DEFAULT bzImage
+##### DHCP
 
-DISPLAY boot.msg
+`/etc/dhcp/dhcpd.conf`
 
-# Uncomment *one* of the 'APPEND' lines below.
+    ddns-update-style none;
+    option space PXE;
+    option PXE.mtftp-ip               code 1 = ip-address;  
+    option PXE.mtftp-cport            code 2 = unsigned integer 16;
+    option PXE.mtftp-sport            code 3 = unsigned integer 16;
+    option PXE.mtftp-tmout            code 4 = unsigned integer 8;
+    option PXE.mtftp-delay            code 5 = unsigned integer 8;
+    option PXE.discovery-control      code 6 = unsigned integer 8;
+    option PXE.discovery-mcast-addr   code 7 = ip-address;
+    subnet 10.11.12.0 netmask 255.255.255.0 {
+      class "pxeclients" {
+        match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+        option vendor-class-identifier "PXEClient";
+        vendor-option-space PXE;
+        option PXE.mtftp-ip 0.0.0.0;
+        option routers 10.11.12.1;
+        filename "pxelinux.0";
+        next-server 10.11.12.1;
+      }
+      pool {
+        max-lease-time 86400;
+        default-lease-time 86400;
+        range 10.11.12.101 10.11.12.254;
+        allow unknown clients;
+      }
+    }
 
-# Silent cloning from a compressed disk image, with reboot in 5 seconds when ready:
-#APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=oblive.img.gz gzip reboot=5 root=/dev/ram0
+##### PXE Boot Loader
 
-# Silent cloning from a compressed disk image, drop into shell:
-#APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=my_vda.img.gz gzip root=/dev/ram0
+`/var/lib/tftpboot/pxelinux.cfg/default`
 
-# Drop into a shell, with tools to make a new disk image:
-APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=none root=/dev/ram0
-
+    DEFAULT bzImage
+    
+    DISPLAY boot.msg
+    
+    # Uncomment *one* of the 'APPEND' lines below.
+    
+    # Silent cloning from a compressed disk image, with reboot in 5 seconds when ready:
+    #APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=oblive.img.gz gzip reboot=5 root=/dev/ram0
+    
+    # Silent cloning from a compressed disk image, drop into shell:
+    #APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=my_vda.img.gz gzip root=/dev/ram0
+    
+    # Drop into a shell, with tools to make a new disk image:
+    APPEND initrd=initramfs.cpio.gz rw quiet ip=dhcp disk=vda image=none root=/dev/ram0
+    
 Get the point?
 
 If not, please do not use CloneLove! Make sure you understand above mechanism before use!
-Tips for image creation
+
+### Tips for image creation
+
 To do.
-Tweaking
+
+### Tweaking
+
 To do.
