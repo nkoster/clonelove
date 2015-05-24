@@ -2,6 +2,8 @@ Current state: Experimental / Beta! See To do below.
 
 # CloneLove
 
+![clones](https://w3b.net/clonelove/clones.jpg "clones")
+
 ### A network disk cloner
 #### based on PXE, dd and gzip, assembled with Linux, udev, busybox and dropbear
 
