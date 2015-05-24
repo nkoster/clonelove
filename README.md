@@ -13,7 +13,7 @@ When CloneLove is loaded and/or cloning, you can connect to CloneLove with ssh a
 
 ### Download
 
-    Click [here](https://w3b.net/clonelove/clone.go) to download release 20150101, md5sum d6cf8a91a543cfb2dc8f9c22754af234
+Click [here](https://w3b.net/clonelove/clone.go) to download release 20150101, md5sum d6cf8a91a543cfb2dc8f9c22754af234
 
 ### Usage
 
