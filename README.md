@@ -1,4 +1,4 @@
-Current state: Experimental / Beta! See To do below.
+Current state: Experimental but working.
 
 # CloneLove
 
@@ -137,11 +137,3 @@ Next,
 Get the point?
 
 If not, please do not use CloneLove! Make sure you understand above mechanism before use!
-
-### Tips for image creation
-
-To do.
-
-### Tweaking
-
-To do.
