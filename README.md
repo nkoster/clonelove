@@ -138,4 +138,5 @@ Get the point?
 
 If not, please do not use CloneLove! Make sure you understand above mechanism before use!
 
-If you want me to help you, to set up a fully working image clone factory, I'm open for consultancy.
+If you want me to help you, to set up a fully working OS independent disk image clone factory, let me know. Perhaps we can work something out.
+
